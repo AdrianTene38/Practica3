@@ -274,7 +274,7 @@ function validarCorreo() {
   if (correo.length == 2) {
     if (correo[0].length < 3) {
       document.getElementById("mensajeEmail").innerHTML =
-        "<br>Direccion no valido 123@ups.edu.ec <br>Direccion no valido 123@est.ups.edu.ec";
+        "<br>Direccion no valido ateneg1@ups.edu.ec <br>Direccion no valido ateng1@est.ups.edu.ec";
       return false;
     }
     if (
@@ -289,7 +289,7 @@ function validarCorreo() {
     }
   } else {
     document.getElementById("mensajeEmail").innerHTML =
-      "<br>Direccion no valido 123@ups.edu.ec <br>Direccion no valido 123@est.ups.edu.ec";
+      "<br>Direccion no valido ateneg1@ups.edu.ec <br>Direccion no valido ateneg1@est.ups.edu.ec";
     return false;
   }
   banCorreo = true;
