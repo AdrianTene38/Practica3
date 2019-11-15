@@ -16,23 +16,23 @@ function validarCamposObligatorios() {
     if (elemento.value == "" && elemento.type == "text") {
       if (elemento.id == "cedula") {
         document.getElementById("mensajeCedula").innerHTML =
-          "<br>La cedula esta vacia";
+          "<br>La cedula no esta bien ingresada";
       }
       if (elemento.id == "nombre") {
         document.getElementById("mensajeNombre").innerHTML =
-          "<br>El nombre esta vacia";
+          "<br>El nombre esta mal ingresado";
       }
       if (elemento.id == "apellido") {
         document.getElementById("mensajeApellido").innerHTML =
-          "<br>El Apellido esta vacia";
+          "<br>El Apellido esta mal ingresado";
       }
       if (elemento.id == "direccion") {
         document.getElementById("mensajeDireccion").innerHTML =
-          "<br>La direccion esta vacia";
+          "<br>La direccion esta mal ingresado";
       }
       if (elemento.id == "telefono") {
         document.getElementById("mensajeTelefono").innerHTML =
-          "<br>El telefono esta vacia";
+          "<br>El telefono esta mal ingresadi=o";
       }
       elemento.style.border = "2px red solid";
       elemento.className = "error";
@@ -88,14 +88,14 @@ function validarCedula() {
         banCedula = false;
         activarBtn();
         document.getElementById("mensajeCedula").innerHTML =
-          "<br>error";
+          "<br>Numero erroneo";
       }
     }
   } else {
     banCedula = false;
     activarBtn();
     document.getElementById("mensajeCedula").innerHTML =
-      "<br>Numero de cedula invalida";
+      "<br>Numero de cedula incorrecto";
   }
   return false;
 }
@@ -103,7 +103,7 @@ function validarCedula() {
 function validarNumero(evt) {
   var charCode = evt.which ? evt.which : event.keyCode;
   if (!(charCode >= 48 && charCode <= 57)) {
-    alert("Ingrese solo numeros.");
+    alert("Solo se permiten numeros.");
     return false;
   }
   return true;
@@ -123,7 +123,7 @@ function validarTexto(evt) {
     (charCode < 65 || charCode > 90) &&
     (charCode < 97 || charCode > 122)
   ) {
-    alert("error.");
+    alert("Ingrese solo letras.");
     return false;
   }
   return true;
@@ -140,7 +140,7 @@ function validarNombre() {
   } else {
     activarBtn();
     document.getElementById("mensajeNombre").innerHTML =
-      "<br>error";
+      "<br>Ingrese Un Nombre Correcto";
   }
   return false;
 }
@@ -156,7 +156,7 @@ function validarApellido() {
   } else {
     activarBtn();
     document.getElementById("mensajeApellido").innerHTML =
-      "<br>Ingrese apellido valido";
+      "<br>Ingrese un Apellido Valido";
   }
   return false;
 }
@@ -175,7 +175,7 @@ function validarFecha() {
   var fecha = elemento.value.split("/");
   if (elemento.value.length != 10) {
     document.getElementById("mensajeFecha").innerHTML =
-      "<br>Ingrese fecha valida: 04/11/1990";
+      "<br>Fecha erronea";
     return false;
   } else {
     document.getElementById("mensajeFecha").innerHTML = "";
@@ -187,10 +187,10 @@ function validarFecha() {
       var year = fecha[2];
       var dmax;
       if (year < 1000 || year > new Date().getFullYear()) {
-        alert("error);
+        alert("error año");
         if (year > new Date().getFullYear())
           document.getElementById("mensajeFecha").innerHTML =
-            "<br>error";
+            "<br>Error de año";
         return false;
       }
       if (dia.length == 2 && mes.length == 2 && year.length == 4) {
@@ -235,13 +235,13 @@ function validarFecha() {
           default:
             alert("error mes");
             document.getElementById("mensajeFecha").innerHTML =
-              "<br>error";
+              "<br>El mes ingresado no existe";
             return false;
         }
         if (dia < 1 || dia > dmax) {
-          alert("error ");
+          alert("error dia");
           document.getElementById("mensajeFecha").innerHTML =
-            "<br>Error";
+            "<br>El dia ingresado no existe";
           return false;
         }
       } else {
@@ -255,11 +255,11 @@ function validarFecha() {
     ) {
       alert("Error fecha");
       document.getElementById("mensajeFecha").innerHTML =
-        "<brerror";
+        "<br>Ingrese fecha valida: 04/11/1990";
       return false;
     }
   } catch (err) {
-    alert("error");
+    alert("Error fechas");
     return false;
   }
   banFecha = true;
