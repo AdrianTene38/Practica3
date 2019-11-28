@@ -3,13 +3,13 @@ var banNombre = false;
 var banApellido = false;
 var banTelefono = false;
 var banDir = false;
-var banFecha = false;
+
 var banCorreo = false;
 var banPasword = false;
 
 function validarCamposObligatorios() {
   var bandera = true;
-  banFecha = false;
+  
   banDir = false;
   for (var i = 0; i < document.forms[0].elements.length; i++) {
     var elemento = document.forms[0].elements[i];
@@ -169,107 +169,8 @@ function checkDate(evt) {
   }
 }
 
-function validarFecha() {
-  banFecha = false;
-  var elemento = document.getElementById("fecha");
-  var fecha = elemento.value.split("/");
-  if (elemento.value.length != 10) {
-    document.getElementById("mensajeFecha").innerHTML =
-      "<br>Fecha erronea";
-    return false;
-  } else {
-    document.getElementById("mensajeFecha").innerHTML = "";
-  }
-  try {
-    if (fecha.length == 3 && fecha[2].length == 4) {
-      var dia = fecha[0];
-      var mes = fecha[1];
-      var year = fecha[2];
-      var dmax;
-      if (year < 1000 || year > new Date().getFullYear()) {
-        alert("error año");
-        if (year > new Date().getFullYear())
-          document.getElementById("mensajeFecha").innerHTML =
-            "<br>Error de año";
-        return false;
-      }
-      if (dia.length == 2 && mes.length == 2 && year.length == 4) {
-        switch (parseInt(mes)) {
-          case 1:
-            dmax = 31;
-            break;
-          case 2:
-            if (year % 4 == 0) dmax = 29;
-            else dmax = 28;
-            break;
-          case 3:
-            dmax = 31;
-            break;
-          case 4:
-            dmax = 30;
-            break;
-          case 5:
-            dmax = 31;
-            break;
-          case 6:
-            dmax = 30;
-            break;
-          case 7:
-            dmax = 31;
-            break;
-          case 8:
-            dmax = 31;
-            break;
-          case 9:
-            dmax = 30;
-            break;
-          case 10:
-            dmax = 31;
-            break;
-          case 11:
-            dmax = 30;
-            break;
-          case 12:
-            dmax = 31;
-            break;
-          default:
-            alert("error mes");
-            document.getElementById("mensajeFecha").innerHTML =
-              "<br>El mes ingresado no existe";
-            return false;
-        }
-        if (dia < 1 || dia > dmax) {
-          alert("error dia");
-          document.getElementById("mensajeFecha").innerHTML =
-            "<br>El dia ingresado no existe";
-          return false;
-        }
-      } else {
-        alert("Error fechas");
-        estado = false;
-      }
-    }
-    if (
-      (fecha.length != 3 || fecha[2].length < 4) &&
-      elemento.value.length == 10
-    ) {
-      alert("Error fecha");
-      document.getElementById("mensajeFecha").innerHTML =
-        "<br>Ingrese fecha valida: 04/11/1990";
-      return false;
-    }
-  } catch (err) {
-    alert("Error fechas");
-    return false;
-  }
-  banFecha = true;
-  activarBtn();
-  return true;
-}
-
 function validarCorreo() {
-  banCorreo = false;
-  var elemento = document.getElementById("email");
+  banCorreo = false;  var elemento = document.getElementById("email");
   var correo = elemento.value.split("@");
   if (correo.length == 2) {
     if (correo[0].length < 3) {
